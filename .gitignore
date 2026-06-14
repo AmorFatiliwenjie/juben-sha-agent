@@ -1,0 +1,27 @@
+.env
+.env.*
+!.env.example
+
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# 编辑器/系统文件
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# 生成成品通常体积大且包含创作内容；需要保留时手动复制或解除忽略。
+outputs/*
+!outputs/.gitkeep
+
+# 投稿/导出产物与临时文件
+*.zip
+*.docx
+*.log
+*.tmp
+tmp/
+temp/

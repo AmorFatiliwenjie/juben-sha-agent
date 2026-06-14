@@ -1,0 +1,2 @@
+# No third-party dependencies.
+# The project uses Python stdlib and an OpenAI-compatible HTTP API.
