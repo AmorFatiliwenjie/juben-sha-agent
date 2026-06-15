@@ -486,12 +486,12 @@ def build_player_text_prompt(
 ) -> str:
     profile = get_profile(length_profile)
     return f"""
-请为指定角色生成一份长篇玩家个人本。你能看到完整 story bible，但必须严格遵守角色信息边界。
+请为指定角色生成一份长篇玩家个人本。你能看到创作参考 bible，但必须严格遵守角色信息边界。
 
 用户 brief：
 {brief_block(brief)}
 
-完整 story bible：
+创作参考 bible：
 {json.dumps(bible, ensure_ascii=False, indent=2)}
 
 要生成的角色：
@@ -602,7 +602,7 @@ def build_player_outline_prompt(
 用户 brief：
 {brief_block(brief)}
 
-完整 story bible：
+创作参考 bible：
 {json.dumps(bible, ensure_ascii=False, indent=2)}
 
 要生成的角色：
@@ -661,7 +661,7 @@ def build_player_section_prompt(
 用户 brief：
 {brief_block(brief)}
 
-完整 story bible：
+创作参考 bible：
 {json.dumps(bible, ensure_ascii=False, indent=2)}
 
 要生成的角色：

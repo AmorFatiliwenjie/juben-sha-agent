@@ -24,6 +24,7 @@ jbs_agent/
 2. `generation.pipeline` 或 `generation.langgraph_workflow` 生成 `brief -> story_bible -> review -> package -> player_docs`。
 3. `quality.validator` 做本地结构检查。
 4. `output.exporter` 保存标准目录，并调用 `output.submission` 生成投稿版。
-5. LangGraph 引擎额外通过 `memory.hierarchical_memory` 保存 canonical、working、retrieval 三层记忆。
+5. LangGraph 引擎额外通过 `memory.hierarchical_memory` 保存增强版分层记忆：canonical、working、summaries、role_memories、round_memories、fact_index、retrieval_chunks、memory_events、context_audits。
+6. 玩家本生成时，会先基于完整 `story_bible` 构造 `player_visible_bible`，再结合权限检索和角色记忆扩写，避免把 DM 真相直接带进玩家侧 prompt。
 
 多 Agent 与 Memory 的详细流图见 `docs/TECHNICAL_FLOW.md`。
