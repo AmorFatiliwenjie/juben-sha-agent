@@ -125,12 +125,12 @@ python writing.py --no-json-mode
 - `handouts/`：可打印或可复制的道具文本。
 - `source/`：brief、story bible、审稿 JSON、完整资料包 JSON。
 - `review/quality_report.md`：模型审稿结果和本地结构检查。
-- `submission/`：按《百变大侦探》投稿要求整理的 Word 投稿版目录。
+- `submission/`：按本地投稿要求整理的 Word 投稿版目录。
 - `剧本名+人数+题材+作者微信号.zip`：可进一步人工复核后投稿的压缩包。
 
 ## 投稿版
 
-项目会自动生成百变投稿版结构。投稿要求原文和整理稿默认仅本地保存，不提交到 GitHub；如需调整格式，请参考本地 `docs/投稿要求.md` 和 `docs/submission_format.md`。
+项目会自动生成通用投稿版结构。投稿要求原文和整理稿默认仅本地保存，不提交到 GitHub；如需调整格式，请参考本地 `docs/投稿要求.md` 和 `docs/submission_format.md`。
 
 投稿版包含：
 
