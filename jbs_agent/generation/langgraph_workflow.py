@@ -42,10 +42,10 @@ if TypedDict is not None:
         review: dict[str, Any]
         package: dict[str, Any]
         player_docs: list[dict[str, Any]]
-    warnings: list[str]
-    run_dir: str
-    dry_run: bool
-    revision_count: int
+        warnings: list[str]
+        run_dir: str
+        dry_run: bool
+        revision_count: int
 else:
     GraphState = dict  # type: ignore[misc, assignment]
 

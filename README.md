@@ -15,7 +15,7 @@ jbs_agent/
   cli.py       命令行入口
 ```
 
-更详细的代码结构说明见 `docs/ARCHITECTURE.md`。
+更详细的代码结构说明见 `docs/ARCHITECTURE.md`；多 Agent 与 Memory 技术流图见 `docs/TECHNICAL_FLOW.md`。
 
 ## 快速开始
 
