@@ -91,6 +91,14 @@ conda activate jbs-langgraph
 python writing.py --engine langgraph --auto-brief --length long --player-depth deep --out outputs
 ```
 
+`environment.yml` 只使用 `defaults` 创建 Python 环境，再由 pip 安装 LangGraph，兼容较老的 conda。若仍遇到求解失败，可手动执行：
+
+```powershell
+conda create -n jbs-langgraph python=3.11 pip -c defaults
+conda activate jbs-langgraph
+pip install "langgraph>=0.2.0" "langchain-core>=0.3.0"
+```
+
 这个版本会把记忆和检查点写入 `outputs/.memory/`，并生成 `review/langgraph_memory_report.md`。
 
 ## API 配置
