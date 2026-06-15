@@ -4,7 +4,7 @@ import argparse
 import sys
 from pathlib import Path
 
-from jbs_agent.submission import build_submission_for_run
+from jbs_agent.output.submission import build_submission_for_run
 
 
 def build_parser() -> argparse.ArgumentParser:

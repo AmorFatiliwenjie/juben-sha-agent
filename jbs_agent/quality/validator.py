@@ -4,8 +4,8 @@ import json
 import re
 from typing import Any
 
-from .length_profiles import get_profile, is_expanded_profile
-from .prompts import player_depth_target_chars
+from ..generation.length_profiles import get_profile, is_expanded_profile
+from ..generation.prompts import player_depth_target_chars
 
 
 def validate_all(

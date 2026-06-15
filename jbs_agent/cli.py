@@ -5,10 +5,10 @@ import json
 import sys
 from pathlib import Path
 
-from .config import ConfigError, RuntimeConfig, load_dotenv
-from .length_profiles import available_profiles, default_max_tokens, default_timeout
-from .pipeline import generate_auto_brief, load_brief, run_pipeline
-from .prompts import available_player_depths
+from .core.config import ConfigError, RuntimeConfig, load_dotenv
+from .generation.length_profiles import available_profiles, default_max_tokens, default_timeout
+from .generation.pipeline import generate_auto_brief, load_brief, run_pipeline
+from .generation.prompts import available_player_depths
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -20,6 +20,12 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--brief-seed", default="", help="自动生成 brief 时的一句话种子想法，可留空。")
     parser.add_argument("--brief-seed-file", default="", help="自动生成 brief 时读取的种子文本文件。")
     parser.add_argument("--save-brief", default="", help="把自动生成的 brief 另存为 JSON 文件，便于下次手动复用。")
+    parser.add_argument(
+        "--engine",
+        choices=["prompt", "langgraph"],
+        default="prompt",
+        help="生成引擎：prompt 为原流水线，langgraph 为多 Agent 图工作流。",
+    )
     parser.add_argument(
         "--length",
         choices=available_profiles(),
@@ -93,15 +99,28 @@ def main(argv: list[str] | None = None) -> int:
                 print(f"自动 brief 已保存：{save_path}", flush=True)
         else:
             brief = load_brief(Path(args.brief))
-        run_dir, warnings = run_pipeline(
-            brief,
-            config,
-            Path(args.out),
-            dry_run=args.dry_run,
-            length_profile=args.length,
-            player_depth=args.player_depth,
-            progress=lambda message: print(message, flush=True),
-        )
+        if args.engine == "langgraph":
+            from .generation.langgraph_workflow import run_langgraph_pipeline
+
+            run_dir, warnings = run_langgraph_pipeline(
+                brief,
+                config,
+                Path(args.out),
+                dry_run=args.dry_run,
+                length_profile=args.length,
+                player_depth=args.player_depth,
+                progress=lambda message: print(message, flush=True),
+            )
+        else:
+            run_dir, warnings = run_pipeline(
+                brief,
+                config,
+                Path(args.out),
+                dry_run=args.dry_run,
+                length_profile=args.length,
+                player_depth=args.player_depth,
+                progress=lambda message: print(message, flush=True),
+            )
     except (ConfigError, FileNotFoundError, ValueError) as exc:
         print(f"ERROR: {exc}", file=sys.stderr)
         return 2

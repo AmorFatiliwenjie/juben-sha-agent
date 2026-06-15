@@ -18,6 +18,9 @@ Thumbs.db
 outputs/*
 !outputs/.gitkeep
 
+.memory/
+**/.memory/
+
 # 投稿/导出产物与临时文件
 *.zip
 *.docx

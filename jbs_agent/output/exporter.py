@@ -7,8 +7,8 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any
 
-from . import __version__
-from .knowledge import SOURCE_NOTES
+from .. import __version__
+from ..reference.knowledge import SOURCE_NOTES
 
 
 WINDOWS_RESERVED = {"CON", "PRN", "AUX", "NUL", *(f"COM{i}" for i in range(1, 10)), *(f"LPT{i}" for i in range(1, 10))}

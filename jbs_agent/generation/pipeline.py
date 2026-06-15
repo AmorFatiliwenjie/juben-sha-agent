@@ -4,9 +4,10 @@ import json
 from pathlib import Path
 from typing import Any, Callable
 
-from .config import RuntimeConfig
-from .exporter import save_project
-from .llm import OpenAICompatibleClient
+from ..core.config import RuntimeConfig
+from ..core.llm import OpenAICompatibleClient
+from ..output.exporter import save_project, safe_filename
+from ..quality.validator import make_quality_report, normalize_role_ref, validate_all
 from .prompts import (
     SYSTEM_PROMPT,
     build_auto_brief_prompt,
@@ -24,10 +25,8 @@ from .prompts import (
     assemble_player_book,
     PLAYER_BOOK_SECTIONS,
 )
-from .exporter import safe_filename
 from .length_profiles import is_expanded_profile
 from .sample_data import sample_auto_brief, sample_bible, sample_package, sample_player_docs, sample_review
-from .validator import make_quality_report, normalize_role_ref, validate_all
 
 Progress = Callable[[str], None]
 

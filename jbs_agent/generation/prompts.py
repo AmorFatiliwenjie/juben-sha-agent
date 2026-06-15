@@ -3,7 +3,7 @@ from __future__ import annotations
 import json
 from typing import Any
 
-from .knowledge import RESEARCH_CONSTRAINTS
+from ..reference.knowledge import RESEARCH_CONSTRAINTS
 from .length_profiles import get_profile, profile_brief_note
 from .style_profiles import style_profile_note
 

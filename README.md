@@ -2,6 +2,21 @@
 
 这个项目用于调用大模型 API 自动创作并规范保存剧本杀：先生成 `story_bible`，再做公平性/安全性审稿，必要时修订，最后分别导出 DM 手册、真相复盘、线索卡、玩家个人本、道具文本和质量报告。
 
+## 目录结构
+
+```text
+jbs_agent/
+  core/        配置、环境加载、模型客户端
+  generation/  提示词、长度档位、生成流水线、LangGraph 工作流
+  memory/      分层记忆与长上下文检索
+  output/      导出、Word 生成、投稿版整理
+  quality/     审稿与结构校验
+  reference/   研究约束与资料来源
+  cli.py       命令行入口
+```
+
+更详细的代码结构说明见 `docs/ARCHITECTURE.md`。
+
 ## 快速开始
 
 1. 准备 Python 3.7+。
@@ -65,6 +80,18 @@ python writing.py --dry-run --brief configs/example_brief.json --out outputs
 ```powershell
 python writing.py --dry-run --auto-brief --out outputs
 ```
+
+## LangGraph 多 Agent 版本
+
+如果你想用多 Agent + 分层记忆版本，请单独建 conda 环境：
+
+```powershell
+conda env create -f environment.yml
+conda activate jbs-langgraph
+python writing.py --engine langgraph --auto-brief --length long --player-depth deep --out outputs
+```
+
+这个版本会把记忆和检查点写入 `outputs/.memory/`，并生成 `review/langgraph_memory_report.md`。
 
 ## API 配置
 

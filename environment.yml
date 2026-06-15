@@ -1,0 +1,10 @@
+name: jbs-langgraph
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.11
+  - pip
+  - pip:
+      - langgraph>=0.2.0
+      - langchain-core>=0.3.0
