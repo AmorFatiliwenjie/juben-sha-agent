@@ -21,6 +21,10 @@ outputs/*
 .memory/
 **/.memory/
 
+# 平台投稿要求原文/整理稿仅本地保存。
+docs/投稿要求.md
+docs/submission_format.md
+
 # 投稿/导出产物与临时文件
 *.zip
 *.docx

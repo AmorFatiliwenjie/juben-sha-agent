@@ -130,7 +130,7 @@ python writing.py --no-json-mode
 
 ## 投稿版
 
-项目会自动生成百变投稿版结构，要求来源见 `docs/投稿要求.md`，实现说明见 `docs/submission_format.md`。
+项目会自动生成百变投稿版结构。投稿要求原文和整理稿默认仅本地保存，不提交到 GitHub；如需调整格式，请参考本地 `docs/投稿要求.md` 和 `docs/submission_format.md`。
 
 投稿版包含：
 
